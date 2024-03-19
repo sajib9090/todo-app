@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Management</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="../styles/tasks.css" />
+  </head>
+  <body>
+    <div class="container mx-auto bg-1"></div>
+    <div class="head">
+      <a href="/pages/home.html"><i class="fa fa-home"></i></a>
+    </div>
+
+    <div class="tab">
+      <button class="tablinks flex items-center" id="allTab">
+        All <span id="allCount" class="mr-4 text-green"></span>
+      </button>
+      <button class="tablinks flex items-center" id="completedTab">
+        Completed <span id="allCompleteCount" class="mr-4 text-green"></span>
+      </button>
+      <button class="tablinks flex items-center" id="incompleteTab">
+        Incomplete <span id="allInCompleteCount" class="mr-4 text-green"></span>
+      </button>
+    </div>
+
+    <div id="allContent" class="tabcontent">
+      <div
+        id="openModalBtn"
+        class="addTaskBtn bg-primary text-white flex items-center justify-center"
+        title="add new task"
+      >
+        <p class="cursor-pointer">+</p>
+      </div>
+
+      <!-- all tasks -->
+      <div>
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <h3>Tasks</h3>
+            <div id="totalTask">
+              <!-- <h3 class="ml-3">00</h3> -->
+            </div>
+          </div>
+          <div class="flex flex-col items-center mark-btn">
+            <button class="cursor-pointer" id="deleteAll" title="remove all">
+              Mark as delete
+            </button>
+            <div id="taskError"></div>
+            <button
+              class="cursor-pointer"
+              id="completeAll"
+              title="complete all"
+            >
+              Mark as completed
+            </button>
+            <div id="taskErrorComplete"></div>
+          </div>
+        </div>
+
+        <div
+          id="task-data"
+          class="grid gap-12 sm-grid-cols-1 md-grid-cols-1 lg-grid-cols-2 grid-cols-2"
+        >
+          <!-- <div class="task-box flex justify-between items-center px-15">
+            <div class="task-info">
+              <h3>Office</h3>
+              <p>Description</p>
+              <p>Time</p>
+            </div>
+            <div>
+              <p class="px-15 py-4 bg-primary text-white status">status</p>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <div id="completedContent" class="tabcontent">
+      <div class="flex items-center">
+        <h3>Completed</h3>
+        <div id="completedTotalTask">
+          <!-- <h3 class="ml-3">00</h3> -->
+        </div>
+      </div>
+      <div class="flex flex-col items-center mark-btn">
+        <button
+          class="cursor-pointer"
+          id="deleteAllCompleted"
+          title="remove all"
+        >
+          Mark as delete
+        </button>
+        <div id="taskErrorC"></div>
+      </div>
+
+      <div
+        id="task-data-completed"
+        class="grid gap-12 sm-grid-cols-1 md-grid-cols-1 lg-grid-cols-2 grid-cols-2"
+      >
+        <!-- <div class="task-box flex justify-between items-center px-15">
+            <div class="task-info">
+              <h3>Office</h3>
+              <p>Description</p>
+              <p>Time</p>
+            </div>
+            <div>
+              <p class="px-15 py-4 bg-primary text-white status">status</p>
+            </div>
+          </div> -->
+      </div>
+    </div>
+
+    <div id="incompleteContent" class="tabcontent">
+      <div class="flex items-center">
+        <h3>Incomplete</h3>
+        <div id="incompleteTotalTask">
+          <!-- <h3 class="ml-3">00</h3> -->
+        </div>
+      </div>
+      <div class="flex flex-col items-center mark-btn">
+        <button
+          class="cursor-pointer"
+          id="deleteAllIncomplete"
+          title="remove all"
+        >
+          Mark as delete
+        </button>
+        <div id="taskErrorI"></div>
+      </div>
+
+      <div
+        id="task-data-incomplete"
+        class="grid gap-12 sm-grid-cols-1 md-grid-cols-1 lg-grid-cols-2 grid-cols-2"
+      >
+        <!-- <div class="task-box flex justify-between items-center px-15">
+            <div class="task-info">
+              <h3>Office</h3>
+              <p>Description</p>
+              <p>Time</p>
+            </div>
+            <div>
+              <p class="px-15 py-4 bg-primary text-white status">status</p>
+            </div>
+          </div> -->
+      </div>
+    </div>
+
+    <!-- modal -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close"></span>
+        <form id="handleAddTask" class="flex flex-col">
+          <div>
+            <label>Select Task Group*</label><br />
+            <select id="taskGroupSelect">
+              <!-- <option value="" disabled selected>Select an option</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option> -->
+            </select>
+            <div id="taskErrorGroup"></div>
+          </div>
+
+          <div>
+            <label>Description*</label><br />
+            <textarea
+              id="description"
+              name="description"
+              placeholder="Description max 200 characters"
+              style="
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+              "
+            ></textarea>
+            <div id="taskErrorDescription"></div>
+          </div>
+          <div>
+            <label>Choose date*</label><br />
+            <input type="date" name="date" id="date" />
+            <div id="taskErrorDate"></div>
+          </div>
+          <div>
+            <label>Choose time*</label><br />
+            <input type="time" name="time" id="time" />
+            <div id="taskErrorTime"></div>
+          </div>
+          <div id="taskErrorDate"></div>
+          <input class="text-white bg-primary" type="submit" value="Add Task" />
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="../scripts/tasks.js"></script>
+    <script type="module" src="../app.js"></script>
+  </body>
+</html>

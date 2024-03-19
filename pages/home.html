@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../styles/home.css" />
+  </head>
+  <body>
+    <div
+      class="container mx-auto min-h-screen flex flex-col items-center justify-center px-15"
+    >
+      <div class="min-h-70 sm-min-h-screen md-min-h-90 w-full bg-1 p-12">
+        <div class="profile" id="user-info-container"></div>
+
+        <!-- task percentage -->
+        <div class="task-percentage bg-primary">
+          <div>
+            <p class="text-white">Your task completion rate</p>
+            <a href="tasks.html"
+              ><button class="text-primary font-bold">View All Tasks</button></a
+            >
+          </div>
+          <div class="count flex items-center justify-center" id="count"></div>
+        </div>
+
+        <!-- task groups -->
+        <div class="task-group">
+          <div class="flex items-center">
+            <button
+              id="openModalBtn"
+              class="bg-primary text-white cursor-pointer"
+              title="add new task group"
+            >
+              +
+            </button>
+            <h3>Task Groups</h3>
+            <div id="totalTaskItem">
+              <!-- <p class="text-primary">11</p> -->
+            </div>
+          </div>
+          <!-- modal -->
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close"></span>
+              <form id="handleAddTaskGroup" class="flex flex-col">
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  placeholder="Task title"
+                />
+                <div id="taskGroupError"></div>
+                <input
+                  class="text-white bg-primary"
+                  type="submit"
+                  value="Add Task Group"
+                />
+              </form>
+            </div>
+          </div>
+
+          <div
+            id="task-group-data"
+            class="grid xl-grid-cols-3 sm-grid-cols-1 md-grid-cols-1 lg-grid-cols-2 gap-12"
+          >
+            <!-- <div class="task-box flex justify-between items-center px-15">
+              <div class="flex items-center">
+                <div class="task-logo flex justify-center items-center">
+                  <h1>O</h1>
+                </div>
+                <div class="task-info">
+                  <h3>Office projects</h3>
+                  <p>25 tasks</p>
+                </div>
+              </div>
+              <div class="task-progress flex items-center justify-center">
+                <p>50%</p>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="../app.js"></script>
+  </body>
+</html>
