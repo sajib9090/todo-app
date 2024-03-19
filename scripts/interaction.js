@@ -131,6 +131,8 @@ function removeFunc(deleteAll) {
 
       setLocalData("tasks", [...filteredTasks]);
       loadAllTasks();
+      loadAllIncompleteTasks();
+      loadAllCompletedTasks();
     }
   });
   return;
